@@ -1,4 +1,4 @@
-FROM rockylinux:8
+FROM rockylinux:8-minimal
 
 #################################################################################
 # PLEASE NOTE YOU MUST HAVE AN ENTERPRISE MARIADB LICENSE FOR THIS INSTALLATION #
