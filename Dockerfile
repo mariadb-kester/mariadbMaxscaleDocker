@@ -1,4 +1,4 @@
-FROM rockylinux:8
+FROM rockylinux:9.0
 
 #################################################################################
 # PLEASE NOTE YOU MUST HAVE AN ENTERPRISE MARIADB LICENSE FOR THIS INSTALLATION #
@@ -43,7 +43,6 @@ RUN set -x \
   && ./mariadb_es_repo_setup --token="$MARIADB_TOKEN" --apply --mariadb-maxscale-version="$MAXSCALE_VERSION" \
   && dnf install -y \
           maxscale \
-  && pip install --upgrade pip \
   && dnf clean all \
   && chmod g=u /etc/passwd \
   && chmod +x entrypoint.sh \
