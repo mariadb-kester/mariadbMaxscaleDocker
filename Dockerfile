@@ -38,12 +38,12 @@ RUN set -x \
           pwgen \
           psmisc \
           which \
-  && pip install --upgrade pip \
   && wget https://dlm.mariadb.com/enterprise-release-helpers/mariadb_es_repo_setup \
   && chmod +x mariadb_es_repo_setup \
   && ./mariadb_es_repo_setup --token="$MARIADB_TOKEN" --apply --mariadb-maxscale-version="$MAXSCALE_VERSION" \
   && dnf install -y \
           maxscale \
+  && pip install --upgrade pip \
   && dnf clean all \
   && chmod g=u /etc/passwd \
   && chmod +x entrypoint.sh \
