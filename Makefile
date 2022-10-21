@@ -17,10 +17,8 @@ build:
 							 --build-arg VERSION="${VERSION}" \
 							 --build-arg HTTPS_SETTING="on" \
 							 --build-arg IMAGE_VERSION="${IMAGE}" \
-                             --build-arg DBUSER="${DBUSER}" \
-                             --build-arg DBPASS="${DBPASS}" \
-                             --build-arg DBHOST="${DBHOST}" \
-                             --build-arg DATABASE="${DATABASE}" \
+                             --build-arg MAXSCALE_VERSION="${MAXSCALE_VERSION}" \
+                             --build-arg MARIADB_TOKEN="${MARIADB_TOKEN}" \
 							 -t ${IMAGE} .
 
 push-to-digitalocean:
