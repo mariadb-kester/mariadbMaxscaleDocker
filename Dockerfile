@@ -1,4 +1,4 @@
-FROM rockylinux:8-minimal
+FROM rockylinux:8
 
 #################################################################################
 # PLEASE NOTE YOU MUST HAVE AN ENTERPRISE MARIADB LICENSE FOR THIS INSTALLATION #
@@ -38,6 +38,7 @@ RUN set -x \
           pwgen \
           psmisc \
           which \
+  && pip install --upgrade pip \
   && wget https://dlm.mariadb.com/enterprise-release-helpers/mariadb_es_repo_setup \
   && chmod +x mariadb_es_repo_setup \
   && ./mariadb_es_repo_setup --token="$MARIADB_TOKEN" --apply --mariadb-maxscale-version="$MAXSCALE_VERSION" \
