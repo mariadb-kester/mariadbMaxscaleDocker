@@ -1,4 +1,4 @@
-FROM centos:centos8
+FROM rockylinux:9-minimal
 
 #################################################################################
 # PLEASE NOTE YOU MUST HAVE AN ENTERPRISE MARIADB LICENSE FOR THIS INSTALLATION #
