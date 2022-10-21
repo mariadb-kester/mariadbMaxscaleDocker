@@ -4,25 +4,22 @@ FROM centos:centos7
 # PLEASE NOTE YOU MUST HAVE AN ENTERPRISE MARIADB LICENSE FOR THIS INSTALLATION #
 #################################################################################
 
-ENV MARIADB_SERVER_VERSION 10.4
-ENV MARIADB_TOKEN XXXXXXXX
-
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
+ARG MAXSCALE_VERSION
+ARG MARIADB_TOKEN
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="maxscale-server" \
-      org.label-schema.description="MariaDB 10.4 MaxScale" \
-      org.label-schema.url="https://mariadb.com/kb/en/mariadb-1040-release-notes/" \
+      org.label-schema.description="MariaDB MaxScale $MAXSCALE_VERSION version" \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/kesterriley/mariadb-server-dockerfile" \
       org.label-schema.vendor="Kester Riley" \
       org.label-schema.version=$VERSION \
       org.label-schema.schema-version="1.0" \
       maintainer="Kester Riley <kesterriley@hotmail.com>" \
       architecture="AMD64/x86_64" \
-      mariadbVersion=$MARIADB_SERVER_VERSION
+      maxscaleVersion=$MAXSCALE_VERSION
 
 COPY entrypoint.sh /entrypoint.sh
 COPY bin/*.sh /usr/local/bin/
@@ -44,7 +41,7 @@ RUN set -x \
   && wget https://dlm.mariadb.com/enterprise-release-helpers/mariadb_es_repo_setup \
   && echo "99c7f4a3473a397d824d5f591274c2a4f5ebf6dc292eea154800bbaca04ddc7e mariadb_es_repo_setup" | sha256sum -c - \
   && chmod +x mariadb_es_repo_setup \
-  && ./mariadb_es_repo_setup --token="$MARIADB_TOKEN" --apply --mariadb-server-version="$MARIADB_SERVER_VERSION" \
+  && ./mariadb_es_repo_setup --token="$MARIADB_TOKEN" --apply --mariadb-server-version="$MAXSCALE_VERSION" \
   && yum install -y \
           maxscale \
   && yum clean all \
