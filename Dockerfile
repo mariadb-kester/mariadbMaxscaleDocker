@@ -25,9 +25,9 @@ COPY entrypoint.sh /entrypoint.sh
 COPY bin/*.sh /usr/local/bin/
 
 RUN set -x \
-  && yum update -y \
-  && yum install -y epel-release \
-  && yum install -y \
+  && dnf update -y \
+  && dnf install -y epel-release \
+  && dnf install -y \
           wget \
           netcat \
           pigz \
@@ -41,9 +41,9 @@ RUN set -x \
   && wget https://dlm.mariadb.com/enterprise-release-helpers/mariadb_es_repo_setup \
   && chmod +x mariadb_es_repo_setup \
   && ./mariadb_es_repo_setup --token="$MARIADB_TOKEN" --apply --mariadb-maxscale-version="$MAXSCALE_VERSION" \
-  && yum install -y \
+  && dnf install -y \
           maxscale \
-  && yum clean all \
+  && dnf clean all \
   && chmod g=u /etc/passwd \
   && chmod +x entrypoint.sh \
   && chmod -R g=u /var/{lib,run,cache}/maxscale \
