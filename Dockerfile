@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM centos:centos8
 
 #################################################################################
 # PLEASE NOTE YOU MUST HAVE AN ENTERPRISE MARIADB LICENSE FOR THIS INSTALLATION #
