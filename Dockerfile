@@ -40,7 +40,7 @@ RUN set -x \
           which \
   && wget https://dlm.mariadb.com/enterprise-release-helpers/mariadb_es_repo_setup \
   && chmod +x mariadb_es_repo_setup \
-  && ./mariadb_es_repo_setup --token="$MARIADB_TOKEN" --apply --mariadb-server-version="$MAXSCALE_VERSION" \
+  && ./mariadb_es_repo_setup --token="$MARIADB_TOKEN" --apply --mariadb-maxscale-version="$MAXSCALE_VERSION" \
   && yum install -y \
           maxscale \
   && yum clean all \
