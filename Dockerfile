@@ -1,4 +1,4 @@
-FROM rockylinux:9
+FROM rockylinux:8
 
 #################################################################################
 # PLEASE NOTE YOU MUST HAVE AN ENTERPRISE MARIADB LICENSE FOR THIS INSTALLATION #
@@ -25,9 +25,9 @@ COPY entrypoint.sh /entrypoint.sh
 COPY bin/*.sh /usr/local/bin/
 
 RUN set -x \
-  && dnf update -y \
-  && dnf install -y epel-release \
-  && dnf install -y \
+  && yum update -y \
+  && yum install -y epel-release \
+  && yum install -y \
           wget \
           netcat \
           pigz \
@@ -38,12 +38,13 @@ RUN set -x \
           pwgen \
           psmisc \
           which \
+          ca-certificates \
   && wget https://dlm.mariadb.com/enterprise-release-helpers/mariadb_es_repo_setup \
   && chmod +x mariadb_es_repo_setup \
-  && ./mariadb_es_repo_setup --token="$MARIADB_TOKEN" --apply --mariadb-maxscale-version="$MAXSCALE_VERSION" \
-  && dnf install -y \
+  && ./mariadb_es_repo_setup --token="7b02f262-b9c8-4396-a988-21f926dda76e" --apply --mariadb-maxscale-version="22.08" \
+  && yum install -y \
           maxscale \
-  && dnf clean all \
+  && yum clean all \
   && chmod g=u /etc/passwd \
   && chmod +x entrypoint.sh \
   && chmod -R g=u /var/{lib,run,cache}/maxscale \
