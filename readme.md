@@ -5,7 +5,6 @@
 ![GitHub stars](https://img.shields.io/github/stars/mariadb-kester/mariadbMaxscaleDocker?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/mariadb-kester/mariadbMaxscaleDocker?style=social)
 
-
 This container is designed to install MariaDB Enterprise MaxScale. 
 
 **MaxScale is an Enterprise product and must have a license**
