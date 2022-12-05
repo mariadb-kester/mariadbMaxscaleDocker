@@ -41,7 +41,7 @@ RUN set -x \
           ca-certificates \
   && wget https://dlm.mariadb.com/enterprise-release-helpers/mariadb_es_repo_setup \
   && chmod +x mariadb_es_repo_setup \
-  && ./mariadb_es_repo_setup --token="$MARIADB_TOKEN" --apply --mariadb-maxscale-version="22.08" \
+  && ./mariadb_es_repo_setup --token="$MARIADB_TOKEN" --apply --mariadb-maxscale-version="$MAXSCALE_VERSION" \
   && yum install -y \
           maxscale \
   && yum clean all \
